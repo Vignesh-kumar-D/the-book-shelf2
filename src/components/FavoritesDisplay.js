@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { Row } from "react-bootstrap";
 import BookCards from "../layouts/BookCards";
-
+import "bootstrap";
 const FavoritesDisplay = (props) => {
   const favoritesArray = useSelector((state) => state.favorites);
   const displayFavorites = favoritesArray.map((item) => (
@@ -18,7 +18,7 @@ const FavoritesDisplay = (props) => {
   return (
     <>
       {displayFavorites.length === 0 ? (
-        <p>No items in Favorite</p>
+        <p className="fs-1 text-danger text-center">No items in Favorite</p>
       ) : (
         <Row>{displayFavorites}</Row>
       )}

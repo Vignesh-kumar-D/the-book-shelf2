@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { Row } from "react-bootstrap";
 import BookCards from "../layouts/BookCards";
+import "bootstrap";
 const MyListDisplay = (props) => {
   const myListArray = useSelector((state) => state.myList);
   const displaymyList = myListArray.map((item) => (
@@ -17,7 +18,7 @@ const MyListDisplay = (props) => {
   return (
     <>
       {displaymyList.length === 0 ? (
-        <p>No items in My List</p>
+        <p className="fs-1 text-center text-danger">No items in My List</p>
       ) : (
         <Row>{displaymyList}</Row>
       )}
