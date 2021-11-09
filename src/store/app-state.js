@@ -43,7 +43,7 @@ const appState = createSlice({
       state.myList = [...state.myList, ...action.payload];
     },
     removeFavorite: (state, action) => {
-      state.favorites = state.favorites.filter(
+      state.myList = state.myList.filter(
         (item) => item.id !== action.payload[0].id
       );
     },
@@ -51,7 +51,7 @@ const appState = createSlice({
       const index = state.myList.findIndex(
         (item) => item.id === action.payload.id
       );
-      console.log(index);
+
       state.myList[index] = action.payload;
     },
   },

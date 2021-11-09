@@ -5,7 +5,7 @@ import { stateAction } from "../store/app-state";
 const FavoriteButton = (props) => {
   const dispatch = useDispatch();
   const userId = useSelector((state) => state.userId);
-  const favorite = useSelector((state) => state.favorites);
+  const myList = useSelector((state) => state.myList);
   const listChangeHandler = async (event) => {
     const body = {
       id: props.id,
@@ -13,35 +13,49 @@ const FavoriteButton = (props) => {
       subtile: props.subtitle,
       thumbnail: props.thumbnail,
       previewLink: props.previewLink,
-      myList: null,
+      myList: props.myList,
+      checked: true,
     };
     if (event.target.checked === true) {
-      const favoriteItemKey = await updateLists(
-        "POST",
-        userId,
-        body,
-        "favorites"
-      );
-      dispatch(
-        stateAction.addFavorite({
-          key: favoriteItemKey,
-          id: props.id,
-          title: props.title,
-          subtile: props.subtitle,
-          thumbnail: props.thumbnail,
-          previewLink: props.previewLink,
-        })
-      );
+      const existingItem = myList.filter((item) => props.id === item.id);
+      let favoriteItemKey;
+      if (existingItem.length !== 0) {
+        body.checked = true;
+        body.key = existingItem[0].key;
+        body.myList = existingItem[0].myList;
+        favoriteItemKey = await updateLists("PUT", userId, body, "lists");
+        dispatch(stateAction.updateMyList(body));
+      } else {
+        favoriteItemKey = await updateLists("POST", userId, body, "lists");
+        dispatch(
+          stateAction.addMyList({
+            key: favoriteItemKey,
+            id: props.id,
+            title: props.title,
+            subtile: props.subtitle,
+            thumbnail: props.thumbnail,
+            previewLink: props.previewLink,
+            myList: props.myList,
+            checked: true,
+          })
+        );
+      }
     } else {
-      const deleteFavorite = favorite.filter((item) => props.id === item.id);
-      dispatch(stateAction.removeFavorite(deleteFavorite));
+      const existingItem = myList.filter((item) => props.id === item.id);
 
-      updateLists(
-        "DELETE",
-        userId,
-        { key: deleteFavorite[0].key },
-        "favorites"
-      );
+      if (existingItem.length !== 0 && existingItem[0].myList !== undefined) {
+        body.checked = false;
+        console.log(props.myList);
+        body.key = existingItem[0].key;
+        body.myList = existingItem[0].myList;
+        await updateLists("PUT", userId, body, "lists");
+        dispatch(stateAction.updateMyList(body));
+      } else {
+        const deleteFavorite = myList.filter((item) => props.id === item.id);
+        dispatch(stateAction.removeFavorite(deleteFavorite));
+
+        updateLists("DELETE", userId, { key: deleteFavorite[0].key }, "lists");
+      }
     }
   };
 
@@ -52,7 +66,7 @@ const FavoriteButton = (props) => {
         inline
         type="checkbox"
         name="bookStatus"
-        id={`favorite`}
+        id={`lists`}
         label={props.checked ? `Unmark Favorite` : `Mark Favorite`}
         checked={props.checked}
       />

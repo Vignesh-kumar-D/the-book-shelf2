@@ -14,10 +14,13 @@ const BookStatusButton = (props) => {
       thumbnail: props.thumbnail,
       previewLink: props.previewLink,
       myList: event.target.value,
+      checked: props.checked,
     };
     const tempListItem = myList.filter((item) => item.id === props.id);
     if (tempListItem[0]?.key) {
       body.key = tempListItem[0].key;
+      body.checked = tempListItem[0].checked ? tempListItem[0].checked : false;
+
       await updateLists("PUT", userId, body, "lists");
       dispatch(stateAction.updateMyList(body));
     } else {
@@ -29,10 +32,16 @@ const BookStatusButton = (props) => {
   let read, reading, toBeRead;
   if (props.myList === "read") {
     read = true;
+    reading = false;
+    toBeRead = false;
   } else if (props.myList === "reading") {
     reading = true;
+    toBeRead = false;
+    read = false;
   } else if (props.myList === "toBeRead") {
     toBeRead = true;
+    read = false;
+    reading = false;
   }
 
   return (

@@ -32,6 +32,7 @@ const BookCards = (props) => {
               thumbnail={props.thumbnail}
               previewLink={props.previewLink}
               checked={props.checked}
+              myList={props.myList}
             />
           </Form>
           <a
