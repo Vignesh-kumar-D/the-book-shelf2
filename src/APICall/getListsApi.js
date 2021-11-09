@@ -15,7 +15,7 @@ const getListsApi = async (getLists, userId, dispatch) => {
         subtitle: data[key].subtitle,
         thumbnail: data[key].thumbnail,
         previewLink: data[key].previewLink,
-        myList: data[key].myList ? data[key].myList : null,
+        myList: data[key].myList ? data[key].myList : undefined,
         checked: data[key].checked ? data[key].checked : null,
       });
     }

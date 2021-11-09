@@ -10,10 +10,9 @@ const FavoriteButton = (props) => {
     const body = {
       id: props.id,
       title: props.title,
-      subtile: props.subtitle,
+      subtitle: props.subtitle,
       thumbnail: props.thumbnail,
       previewLink: props.previewLink,
-      myList: props.myList,
       checked: true,
     };
     if (event.target.checked === true) {
@@ -27,25 +26,15 @@ const FavoriteButton = (props) => {
         dispatch(stateAction.updateMyList(body));
       } else {
         favoriteItemKey = await updateLists("POST", userId, body, "lists");
-        dispatch(
-          stateAction.addMyList({
-            key: favoriteItemKey,
-            id: props.id,
-            title: props.title,
-            subtile: props.subtitle,
-            thumbnail: props.thumbnail,
-            previewLink: props.previewLink,
-            myList: props.myList,
-            checked: true,
-          })
-        );
+        body.key = favoriteItemKey;
+        dispatch(stateAction.addMyList(body));
       }
     } else {
       const existingItem = myList.filter((item) => props.id === item.id);
 
       if (existingItem.length !== 0 && existingItem[0].myList !== undefined) {
         body.checked = false;
-        console.log(props.myList);
+
         body.key = existingItem[0].key;
         body.myList = existingItem[0].myList;
         await updateLists("PUT", userId, body, "lists");
@@ -68,7 +57,7 @@ const FavoriteButton = (props) => {
         name="bookStatus"
         id={`lists`}
         label={props.checked ? `Unmark Favorite` : `Mark Favorite`}
-        checked={props.checked}
+        defaultChecked={props.checked}
       />
     </>
   );

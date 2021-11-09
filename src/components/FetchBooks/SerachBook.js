@@ -29,7 +29,7 @@ const SearchBook = (props) => {
     }
     return dataItem;
   });
-  console.log(newSearchedItems);
+
   const booksSearched = newSearchedItems.map((item) => {
     return (
       <BookCards
@@ -39,7 +39,7 @@ const SearchBook = (props) => {
         subtitle={item.subtitle}
         thumbnail={item.thumbnail}
         previewLink={item.previewLink}
-        myList={item.myList ? item.myList : null}
+        myList={item.myList ? item.myList : undefined}
         checked={item.checked ? item.checked : false}
       />
     );

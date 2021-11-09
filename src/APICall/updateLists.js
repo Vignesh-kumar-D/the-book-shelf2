@@ -1,5 +1,4 @@
 const updateLists = async (method, userId, body, list) => {
-  console.log(body)
   const res = await fetch(
     `https://the-book-shelf-84b91-default-rtdb.firebaseio.com/users/${userId}/${list}/${
       body.key ? body.key : ""

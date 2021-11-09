@@ -13,9 +13,9 @@ const BookStatusButton = (props) => {
       subtitle: props.subtitle,
       thumbnail: props.thumbnail,
       previewLink: props.previewLink,
-      myList: event.target.value,
       checked: props.checked,
     };
+    body.myList = event.target.value;
     const tempListItem = myList.filter((item) => item.id === props.id);
     if (tempListItem[0]?.key) {
       body.key = tempListItem[0].key;
@@ -55,7 +55,7 @@ const BookStatusButton = (props) => {
           value="read"
           id={`bookStatus`}
           label={`Read this Book`}
-          checked={read}
+          defaultChecked={read}
         />
         <Form.Check
           onChange={changeValueHandler}
@@ -65,7 +65,7 @@ const BookStatusButton = (props) => {
           value="reading"
           id={`bookStatus`}
           label={`Currently Reading this Book`}
-          checked={reading}
+          defaultChecked={reading}
         />
         <Form.Check
           inline
@@ -74,7 +74,7 @@ const BookStatusButton = (props) => {
           id={`bookStatus`}
           value="toBeRead"
           label={`Going to Read this book`}
-          checked={toBeRead}
+          defaultChecked={toBeRead}
           onChange={changeValueHandler}
         />
       </div>

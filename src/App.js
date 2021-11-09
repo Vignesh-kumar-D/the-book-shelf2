@@ -24,7 +24,6 @@ function App() {
           idToken: userDetails.tokenId,
         })
       );
-    console.log("login");
   }, [dispatch]);
   useEffect(() => {
     getListsApi(["favorites", "lists"], userId, dispatch);
