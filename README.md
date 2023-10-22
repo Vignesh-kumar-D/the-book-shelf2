@@ -1,4 +1,4 @@
-# React with Redux and Authetication
+# React with Redux and Authentication
 
 
 ## The Book Shelf 
