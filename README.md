@@ -11,7 +11,7 @@ https://the-book-shelf2.vercel.app/
 - [Project assmed requirements](#project-assumed-requirements)
 - [Installation and Setup Instructions](#installation-and-setup-instruction)
 - [Reflection](#Reflection)
-- 
+  
 ## Description:
 This app is a Book Logger used to Pick the books you want to keep in wishlist and log the status of the books.
 * It was developed as a way to better grasp and understand how to build a frontend App using ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
