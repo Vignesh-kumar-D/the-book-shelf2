@@ -63,16 +63,10 @@ goto : `http://localhost:3000` in browser to view the app
 
 ## Reflection:
 
-This is a side Project I developed to better understand how to work with micro frontends to create apps which are independent and can be developed and modified in isolation.
-This was a two week long project and started as a  `React` based microfrontend.
+This is a side Project I developed in three weeks  to better understand and work in a `react` environment by putting into use all the react concepts I have learned
 
-Communicating Navigation history  used some amount props driling and could have solved using a shared state but I wanted all thee apps to be almost independently developled and deployed so most communications between host and remote are only using Callback functions and
+I used `create-react-app` boilerplate to minimize initial setup and invest more time devloping the feature.
 
-Also I have not used create-react-app or Vue-cli to build the apps as that would include all other dependencies with them and I wanted to keep this light as the goal was only to better understand miccro fronends
-
-Took help of documentation to see how to use CI/CD to and deploy to S3 on push to `main` branch and how to deploy in cloudfront
-
+It doest not have more than three screens but I have made sure I have used all modern day react feature that are predominently used in a well established company, e.g State Magement, Cache Storage, User Authentication
  
-One of the main challenges I ran into was Authentication. This lead me to spend a few days on a research spike into OAuth, Auth0, and two-factor authentication using Firebase or other third parties. Due to project time constraints, I had to table authentication and focus more on data visualization from parts of the API that weren't restricted to authenticated users.
 
-At the end of the day, the technologies implemented in this project are React, React-Router 4.0, Redux, LoDash, D3, and a significant amount of VanillaJS, JSX, and CSS. I chose to use the `create-react-app` boilerplate to minimize initial setup and invest more time in diving into weird technological rabbit holes. In the next iteration I plan on handrolling a `webpack.config.js` file to more fully understand the build process.
