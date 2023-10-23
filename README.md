@@ -17,7 +17,7 @@ This app is a Book Logger used to Pick the books you want to keep in wishlist an
 * It was developed as a way to better grasp and understand how to build a frontend App using ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 * The main goal being to familiarize with the latest concepts of React including `Functional Components`, `React Hooks`, `Context-API`
 * State Management is done using ![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
-* the UI is build using  ![Bootstrap](https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white) with no custom CSS code
+* The UI is build using  ![Bootstrap](https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white) with no custom CSS code
 * ![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white) is used as backed to store and retrive data and user details.
 * `Google Books API` is being used to retrive list of books on search
 * Vercel is used to deploy this app
