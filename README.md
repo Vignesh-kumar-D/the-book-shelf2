@@ -39,8 +39,49 @@ BookShelf is a modern web application that helps users maintain their personal b
 - ![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white) - Deployment
 
 ## 🏗️ Architecture
-[Architecture Diagram Coming Soon]
+```mermaid
+flowchart TB
+    subgraph Frontend["React Frontend"]
+        UI["React Components"]
+        Redux["Redux Store"]
+        LocalStorage["Local Storage"]
+        
+        subgraph Components["Key Components"]
+            Search["Book Search"]
+            List["Wishlist"]
+            Auth["Auth Forms"]
+        end
+        
+        UI --> Redux
+        Redux --> LocalStorage
+        Components --> UI
+    end
 
+    subgraph APIs["External Services"]
+        Firebase["Firebase"]
+        GoogleBooks["Google Books API"]
+        
+        subgraph FirebaseServices["Firebase Services"]
+            Auth_["Authentication"]
+            DB["Realtime Database"]
+        end
+    end
+
+    UI -->|"Search Books"| GoogleBooks
+    UI -->|"User Auth"| Auth_
+    Redux -->|"Store/Fetch Books"| DB
+    LocalStorage -->|"Cache Auth Token"| Auth_
+
+    classDef frontend fill:#61DAFB,stroke:#20232a,stroke-width:2px,color:black
+    classDef apis fill:#FFA611,stroke:#1A1A1A,stroke-width:2px,color:white
+    classDef components fill:#61DAFB,stroke:#20232a,stroke-width:2px,opacity:0.7
+    classDef firebase fill:#FFA611,stroke:#1A1A1A,stroke-width:2px,opacity:0.7
+
+    class Frontend frontend
+    class APIs apis
+    class Components components
+    class FirebaseServices firebase
+```
 ## 💡 Key Features
 
 ### User Authentication
